@@ -5,12 +5,33 @@
     width: 800px;
     top: 10px;
     left: calc(50% - 400px);
-    background-color: bisque;
+    /* background-color: bisque; */
 }
 
 .row{
     margin-left: 0px;
 }
+
+#top-left{
+    border-radius: 400px 0 0 0;
+    /* background-color: yellow; */
+  /*   box-shadow:-10px -10px 10px 10px yellow; */
+}
+#bot-left{
+    border-radius: 0 0 0 400px;
+    /* background-color: red; */
+ /*    box-shadow:-10px 0px 15px 10px red; */
+}
+#top-right{
+    border-radius: 0 400px 0 0;
+    /* background-color: blue; */
+}
+#bot-right{
+    border-radius: 0 0 400px 0;
+    /* background-color: green; */
+}
+
+
 
 .board-piece{
     position: relative;
@@ -20,5 +41,44 @@
     vertical-align: middle;
     height: 400px;
     width: 400px;
-    border: 1px solid black;
+    border: 15px solid black;
+    background-color: #ceebece8;
+}
+
+#circle { 
+    width: 800px;
+    height: 800px;
+    background: red; 
+    -webkit-border-radius: 100px; 
+    border-radius: 400px;
+    position: absolute;
+    top: 10px;
+    left: calc(50% - 400px);
+}
+
+#innerCircle { 
+    width: 300px;
+    height: 300px;
+    background:black; 
+    -webkit-border-radius: 70px; 
+    border-radius: 150px;
+    position: absolute;
+    /* top: 330px; */
+    top: calc(50% - 220px);
+    left: calc(50% - 150px);
+    /* text-align: center; */
+    text-align: center;
+    line-height: 300px;
+    vertical-align: middle;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+.nameplate{
+  position: relative;
+  top: 80px;
+  font-size: 70px;
+}
+.fa-play-circle{
+    position: relative;
+    font-size: 90px;
 }

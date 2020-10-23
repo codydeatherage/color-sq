@@ -1,4 +1,4 @@
-document.body.style.backgroundColor= 'gray';
+document.body.style.backgroundColor= 'black';
 
 function getRandomColor(){
     return '#' + parseInt(Math.random() * 0xffffff).toString(16);
