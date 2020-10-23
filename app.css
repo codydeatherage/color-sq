@@ -14,41 +14,49 @@
 
 #top-left{
     border-radius: 400px 0 0 0;
+}
+#bot-left{
+    border-radius: 0 0 0 400px;
+}
+
+#top-right{
+    border-radius: 0 400px 0 0;
+}
+
+#bot-right{
+    border-radius: 0 0 400px 0;
+}
+
+.light-yellow{
     box-shadow:
     inset 0px 0px 40px 25px  #f1eca2e8,  /* inner white */
     inset 0px 0px 100px 60px #f0e65f, /* middle magenta */
     inset 0px 0px 140px 90px #ffff21; /* outer cyan */
-     background-color: yellow; 
-  /*   box-shadow:-10px -10px 10px 10px yellow; */
+    background-color: yellow; 
 }
-#bot-left{
-    border-radius: 0 0 0 400px;
+
+.light-red{
     box-shadow:
-    inset 0px 0px 20px 15px  #f38b8be8,  /* inner white */
+    inset 0px 0px 20px 15px  #fd7c7ce8,  /* inner white */
     inset 0px 0px 100px 60px #f06e6e, /* middle magenta */
     inset 0px 0px 140px 90px #f32c2c; /* outer cyan */
-    background-color: red; 
-    
-    /* background-color: red; */
- /*    box-shadow:-10px 0px 15px 10px red; */
+    background-color: rgb(226, 38, 38); 
 }
-#top-right{
-    border-radius: 0 400px 0 0;
+
+.light-blue{
     box-shadow:
     inset 0px 0px 40px 15px  #868efb,  /* inner white */
     inset 0px 0px 100px 60px #4c5df8, /* middle magenta */
-    inset 0px 0px 140px 90px #1a3bf3; /* outer cyan */
-    background-color: blue; 
-    /* background-color: blue; */
+    inset 0px 0px 100px 90px #1a3bf3; /* outer cyan */
+    background-color: rgb(44, 44, 236); 
 }
-#bot-right{
-    border-radius: 0 0 400px 0;
+
+.light-green{
     box-shadow:
     inset 0px 0px 40px 15px  #8afb86,  /* inner white */
     inset 0px 0px 100px 60px #5af84c, /* middle magenta */
     inset 0px 0px 140px 90px #1af31a; /* outer cyan */
-    background-color: green; 
-    /* background-color: green; */
+    background-color: #01ad01; 
 }
 
 
