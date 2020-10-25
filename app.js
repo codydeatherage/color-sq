@@ -8,18 +8,19 @@ class Game{
         this.botR = botR
         this.sections = [this.topL, this.topR, this.botL, this.botR];
         this.starter = starter;
+        this.seqIndex = 0;
         this.sequence = [];
         this.starter.addEventListener('click', async ()=>{
             await this.startUp();
         });
     }
-    startSequence = async (n) => {
+    startSequence = async () => {
+        await this.timer(750);
         this.lockInputs(); console.log('input locked...');
-        for(let i = 0; i < n; i++){
-            let index = Math.floor(Math.random() * 4);
-            let nextLight = this.sections[index].color;
-            this.sequence.push(nextLight);
-        }
+        let index = Math.floor(Math.random() * 4);
+        let nextLight = this.sections[index].color;
+        this.sequence.push(nextLight);
+        console.log('Current seq: ', this.sequence);
         for(let i = 0; i < this.sequence.length; i++){
             await this.timer(100);
             let section;
@@ -39,6 +40,7 @@ class Game{
     }
     startUp = async() =>{
         this.lockInputs(); console.log('input locked...');
+        
         for(let i = 0; i < 4; i++){
             let color = this.sections[i].color;
             for(let j = 0; j < 4; j++){ 
@@ -50,7 +52,7 @@ class Game{
             }
         }
         for(let i = 0; i < 3; i++){
-            await this.timer(150);
+            await this.timer(500);
             for(let s of this.sections){
                 s.el.classList.add('lightup-green');
             }
@@ -59,19 +61,28 @@ class Game{
                 s.el.classList.remove('lightup-green');
             }
         }
-        await this.startSequence(3);
+        await this.startSequence();
         this.unlockInputs();console.log('input unlocked...');
     }
-    timer = async (ms)=>{
+    timer = async(ms)=> {
         return new Promise(res => setTimeout(res, ms));
     }
-    lockInputs = async () =>{
+    flashAll = async(color, ms) => {
+        await this.timer(250);
         for(let s of this.sections){
-            console.log(s);
+            s.el.classList.add('lightup-'+color);
+        }
+        await this.timer(ms);
+        for(let s of this.sections){
+            s.el.classList.remove('lightup-'+color);
+        }
+    }
+    lockInputs = () =>{
+        for(let s of this.sections){
             s.inputLocked = true;
         }
     }
-    unlockInputs = async () =>{
+    unlockInputs = () =>{
         for(let s of this.sections){
             s.inputLocked = false;
         }
@@ -83,9 +94,27 @@ class GameSection{
         this.el = el;
         this.color = color;
         this.inputLocked = inputLocked;
-        this.el.addEventListener('click', ()=>{
+        this.el.addEventListener('click', async()=>{
             if(!this.inputLocked){
-                this.buttonFlash(this.el, this.color);
+                console.log(game.sequence);
+                if(this.color === game.sequence[game.seqIndex]){
+                    console.log('Correct');
+                    this.buttonFlash(this.el, this.color);
+                    game.seqIndex++;
+                    console.log('next seq index: ', game.seqIndex);
+                    if(game.seqIndex >= game.sequence.length){
+                        game.seqIndex = 0;
+                        await game.flashAll('green', 500);
+                        await game.startSequence();
+                    }
+                }
+                else{
+                    console.log('WROMG');
+                    await game.flashAll('red', 750);
+                    game.seqIndex = 0;
+                    game.sequence = [];
+                    await game.startUp();
+                }          
             } 
         });
     }
@@ -111,5 +140,9 @@ let botLeft = new GameSection(bot_left, 'red', false);
 let botRight = new GameSection(bot_right, 'green', false);
 
 let game = new Game(play_btn, topLeft, topRight, botLeft, botRight);
+
+
+
+
 
 
