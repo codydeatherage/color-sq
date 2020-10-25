@@ -91,10 +91,8 @@
     -webkit-border-radius: 70px; 
     border-radius: 150px;
     position: absolute;
-    /* top: 330px; */
     top: calc(50% - 220px);
     left: calc(50% - 150px);
-    /* text-align: center; */
     text-align: center;
     line-height: 300px;
     vertical-align: middle;
