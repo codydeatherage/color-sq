@@ -1,9 +1,5 @@
 document.body.style.backgroundColor = 'black'; 
 
-function timer(ms){
-    return new Promise(res => setTimeout(res, ms));
-}
-
 class Game{
     constructor(starter, topL, topR, botL, botR){
         this.topL = topL;
@@ -26,7 +22,7 @@ class Game{
             this.sequence.push(nextLight);
         }
         for(let i = 0; i < this.sequence.length; i++){
-            await timer(100);
+            await this.timer(100);
             let section;
             switch(this.sequence[i]){
                 case 'yellow' : section = this.topL; break;
@@ -37,7 +33,7 @@ class Game{
             let {classList} = section.el;
             let classToAdd = 'lightup-'+section.color;
             classList.add(classToAdd);
-            await timer(500);
+            await this.timer(500);
             classList.remove(classToAdd);
         }
     }
