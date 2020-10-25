@@ -27,7 +27,7 @@
     border-radius: 0 0 400px 0;
 }
 
-.light-yellow{
+.lightup-yellow{
     box-shadow:
     inset 0px 0px 40px 25px  #f1eca2e8,  /* inner white */
     inset 0px 0px 100px 60px #f0e65f, /* middle magenta */
@@ -35,7 +35,7 @@
     background-color: yellow; 
 }
 
-.light-red{
+.lightup-red{
     box-shadow:
     inset 0px 0px 20px 15px  #fd7c7ce8,  /* inner white */
     inset 0px 0px 100px 60px #f06e6e, /* middle magenta */
@@ -43,15 +43,15 @@
     background-color: rgb(226, 38, 38); 
 }
 
-.light-blue{
+.lightup-blue{
     box-shadow:
     inset 0px 0px 40px 15px  #868efb,  /* inner white */
     inset 0px 0px 100px 60px #4c5df8, /* middle magenta */
-    inset 0px 0px 100px 90px #1a3bf3; /* outer cyan */
+    inset 0px 0px 140px 90px #1a3bf3; /* outer cyan */
     background-color: rgb(44, 44, 236); 
 }
 
-.light-green{
+.lightup-green{
     box-shadow:
     inset 0px 0px 40px 15px  #8afb86,  /* inner white */
     inset 0px 0px 100px 60px #5af84c, /* middle magenta */
@@ -70,7 +70,7 @@
     height: 400px;
     width: 400px;
     border: 1px solid  black;
-    background-color: #ceebece8;
+    background-color: #ceebec;
 }
 
 #circle { 
@@ -91,10 +91,8 @@
     -webkit-border-radius: 70px; 
     border-radius: 150px;
     position: absolute;
-    /* top: 330px; */
     top: calc(50% - 220px);
     left: calc(50% - 150px);
-    /* text-align: center; */
     text-align: center;
     line-height: 300px;
     vertical-align: middle;
