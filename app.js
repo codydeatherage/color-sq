@@ -1,24 +1,30 @@
-document.body.style.backgroundColor= 'black';
 
+let doc = document.body;
+doc.style.backgroundColor = 'black'; 
+//const random = require('random');
 function getRandomColor(){
     return '#' + parseInt(Math.random() * 0xffffff).toString(16);
 }
 
-function clearColors(el){
-    let classes = [...el.classList];
-    if(classes.includes('light-red')){
-        el.classList.remove('light-red');
+class GameSection{
+    constructor(el, color){
+        this.el = el;
+        this.color = color;
+        this.el.addEventListener('click', this.buttonFlash.bind(null, this.el, color), false);
     }
-    if(classes.includes('light-blue')){
-        el.classList.remove('light-blue');
-    }
-    if(classes.includes('light-yellow')){
-        el.classList.remove('light-yellow');
-    }
-    if(classes.includes('light-green')){
-        el.classList.remove('light-green');
+    buttonFlash = (el) =>{
+        let newClass = 'lightup-'+ this.color;
+        console.log(newClass);
+        //console.log('classes? ', classes);
+        if(!el.classList.contains(newClass)){
+            el.classList.add(newClass);
+        }
+        setTimeout(()=>{
+            el.classList.remove(newClass);
+        }, 250);
     }
 }
+
 
 
 function buttonFlash(el, color){
@@ -49,19 +55,51 @@ const top_left = document.getElementById('top-left');
 const bot_left = document.getElementById('bot-left');
 const top_right = document.getElementById('top-right');
 const bot_right = document.getElementById('bot-right');
-
+let topLeft = new GameSection(top_left, 'yellow');
+let topRight = new GameSection(top_right, 'blue');
+let botLeft = new GameSection(bot_left, 'red');
+let botRight = new GameSection(bot_right, 'green');
+let sequence = [];
 let squares = [top_left, top_right,bot_right, bot_left];
-const colors = ['yellow', 'blue', 'green', 'red',];
-for(let i = 0; i < squares.length;i++){
+const colors = ['yellow', 'blue', 'green', 'red'];
+/* for(let i = 0; i < squares.length;i++){
     let s = squares[i];
     s.addEventListener('click', buttonFlash.bind(null, s, colors[i]), false);
-}
-
+} */
+ 
 function timer(ms){
     return new Promise(res => setTimeout(res, ms));
 }
-
-async function startUp(segment, lights){
+/* async function startSequence(n){
+    const top_left = document.getElementById('top-left');
+    const bot_left = document.getElementById('bot-left');
+    const top_right = document.getElementById('top-right');
+    const bot_right = document.getElementById('bot-right'); 
+    for(let i = 0; i < n; i++){
+        let lights = ['yellow', 'red', 'blue', 'green'];
+        let index = Math.floor(Math.random() * lights.length);
+        console.log(index);
+        let nextLight = lights[index];
+        sequence.push(nextLight);
+    }
+    console.log(sequence);
+    for(let s of sequence){
+        await timer(100);
+        //console.log(s);
+        let id = '', classToAdd = '';
+        switch(s){
+            case 'yellow' : id = 'top-left'; classToAdd = 'light-yellow'; break;
+            case 'blue': id = 'top-right'; classToAdd = 'light-blue'; break;
+            case 'red' : id = 'bot-left'; classToAdd = 'light-red'; break;
+            case 'green' : id = 'bot-right'; classToAdd = 'light-green'; break;
+        }
+        let el = document.getElementById(id);
+        el.classList.add(classToAdd);
+        await timer(500);
+        el.classList.remove(classToAdd);
+    }
+} */
+/* async function startUp(segment, lights){
     for(let i = 0; i < squares.length; i++){
         for(let j = 0; j < squares.length; j++){ 
             let s = segment[j];
@@ -73,7 +111,7 @@ async function startUp(segment, lights){
     }
 
     for(let i = 0; i < 3; i++){
-        //await timer(50);
+        await timer(150);
         for(let s of segment){
             s.classList.add('light-green');
         }
@@ -82,6 +120,7 @@ async function startUp(segment, lights){
             s.classList.remove('light-green');
         }
     }
+    await startSequence(3);
 }
 play_btn.addEventListener('click', async ()=>{
     const top_left = document.getElementById('top-left');
@@ -91,5 +130,5 @@ play_btn.addEventListener('click', async ()=>{
     let lights = ['light-yellow', 'light-blue', 'light-red', 'light-green'];
     let squares = [top_left, top_right, bot_right, bot_left];
     await startUp(squares, lights);
-})
+}) */
 
