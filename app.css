@@ -47,7 +47,7 @@
     box-shadow:
     inset 0px 0px 40px 15px  #868efb,  /* inner white */
     inset 0px 0px 100px 60px #4c5df8, /* middle magenta */
-    inset 0px 0px 100px 90px #1a3bf3; /* outer cyan */
+    inset 0px 0px 140px 90px #1a3bf3; /* outer cyan */
     background-color: rgb(44, 44, 236); 
 }
 
