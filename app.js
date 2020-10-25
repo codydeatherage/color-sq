@@ -20,6 +20,7 @@ function clearColors(el){
     }
 }
 
+
 function buttonFlash(el, color){
     let classes = [...el.classList];
     let newClass = ' ';
@@ -35,7 +36,7 @@ function buttonFlash(el, color){
     }
     setTimeout(()=>{
         el.classList.remove(newClass);
-    }, 1000);
+    }, 250);
 }
 
 function changeColor(el){
@@ -66,13 +67,13 @@ async function startUp(segment, lights){
             let s = segment[j];
             //console.log(s);
             s.classList.add(lights[i]);
-            await timer(100);
+            await timer(75);
             s.classList.remove(lights[i]);
         }
     }
 
     for(let i = 0; i < 3; i++){
-        await timer(50);
+        //await timer(50);
         for(let s of segment){
             s.classList.add('light-green');
         }
